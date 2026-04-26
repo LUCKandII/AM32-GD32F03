@@ -7,6 +7,19 @@ Firmware for ARM based speed controllers
 The AM32 firmware is designed for STM32 ARM processors to control a brushless motor (BLDC).
 The firmware is intended to be safe and fast with smooth fast startups and linear throttle. It is meant for use with multiple vehicle types and a flight controller. The firmware can also be built with support for crawlers. For crawler usage please read this wiki page [Crawler Hardware](https://github.com/AlkaMotors/AM32-MultiRotor-ESC-firmware/wiki/Crawler-Hardware-and-AM32)
 
+## What's new in this fork
+
+本工程为使用claude辅助实现的AM32支持GD32F103TBU6芯片，已通过编译，暂未硬件验证。
+
+- 支持GD32F03TBU6
+- Mcu/f103/Drivers目录下的文件来源是GD32F10x_Firmware_Library_V2.7.0/Firmware，固件包来源于GD32官网；
+- Mcu/f103路径下/Inc、/Src、/Startup重新实现；
+- 依赖项Inc/targets.h、Makefile添加修改；增加f103makefile.mk
+- PORTING_F103_NOTES.md，移植全量笔记在这里，供参考；
+- FOC_HARDWARE_RESOURCES.md，GD32F103TBU6对应的硬件资源应用情况在此；
+- CODE_ARCHITECTURE.md，claude解读的代码结构
+- setup_f103_symlinks.sh，支持链接其他目录下的GD32F10x_Firmware_Library_V2.7.0/Firmware文件，见备注；
+
 ## Features
 
 AM32 has the following features:

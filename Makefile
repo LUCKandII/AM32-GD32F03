@@ -24,7 +24,7 @@ include $(ROOT)/make/tools.mk
 
 # supported MCU types
 
-MCU_TYPES := E230 F031 F051 F415 F421 G071 L431 G431 V203 G031
+MCU_TYPES := E230 F031 F051 F415 F421 G071 L431 G431 V203 G031 F103
 
 MCU_TYPE := NONE
 
@@ -99,7 +99,8 @@ $$($(2)_BASENAME).bin: $$($(2)_BASENAME).elf
 	$(QUIET)$(xOBJCOPY) -O binary $$(<) $$@
 	$(QUIET)python3 Src/DroneCAN/set_app_signature.py $$@ $$(<)
 	$(QUIET)$(xOBJCOPY) $$(<) -O ihex $$(@:.bin=.hex)
-	$(QUIET)$(CP) -f $$(<) $(OBJ)$(DSEP)debug.elf > $(NUL)
+	$(QUIET)$(CP) -f $$(<) $(OBJ)/debug.elf > /dev/null    
+# 	$(QUIET)$(CP) -f $$(<) $(OBJ)$(DSEP)debug.elf > $(NUL)
 
 # check for CAN support
 $(eval xLDSCRIPT := $$(if $$(call has_can_suffix,$$(2)),$(LDSCRIPT_CAN_$(1)),$(LDSCRIPT_$(1))))
